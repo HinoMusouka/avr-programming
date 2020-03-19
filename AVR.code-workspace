@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "avr-programming",
+			"path": "/Users/krzysztof/Dev/Arduino/avr-programming"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.cmp": "html",
+			"power.h": "c",
+			"io.h": "c",
+			"iom328pb.h": "c",
+			"usart.h": "c"
+		}
+	}
+}

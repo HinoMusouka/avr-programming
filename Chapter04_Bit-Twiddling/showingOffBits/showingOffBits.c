@@ -4,7 +4,7 @@
 #include <avr/io.h>
 #include <avr/power.h>
 #include <util/delay.h>                     /* Functions to waste time */
-
+#include "USART.h"
 #define DELAYTIME 85                                   /* milliseconds */
 #define LED_PORT                PORTB
 #define LED_DDR                 DDRB
@@ -15,6 +15,8 @@ int main(void) {
   uint8_t repetitions;
   uint8_t whichLED;
   uint16_t randomNumber = 0x1234;
+
+  initUSART();
 
   // -------- Inits --------- //
   LED_DDR = 0xff;                    /* all LEDs configured for output */
@@ -34,10 +36,12 @@ int main(void) {
                                                            /* Go Right */
     for (i = 7; i < 255; i--) {
       LED_PORT |= (1 << i);                    /* turn on the i'th pin */
+      printByte(LED_PORT);
       _delay_ms(DELAYTIME);                                    /* wait */
     }
     for (i = 7; i < 255; i--) {
-      LED_PORT &= ~(1 << i);                  /* turn off the i'th pin */
+      LED_PORT &= ~(1 << i);
+      printByte(LED_PORT);                  /* turn off the i'th pin */
       _delay_ms(DELAYTIME);                                    /* wait */
     }
     _delay_ms(5 * DELAYTIME);                                 /* pause */
